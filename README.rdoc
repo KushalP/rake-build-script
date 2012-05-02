@@ -1,0 +1,6 @@
+= h5bp
+
+A Ruby build tool primarily for use with HTML5 Boilerplate.
+
+:include:h5bp.rdoc
+

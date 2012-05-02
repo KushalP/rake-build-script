@@ -1,0 +1,120 @@
+#!/usr/bin/env ruby
+# 1.9 adds realpath to resolve symlinks; 1.8 doesn't
+# have this method, so we add it so we get resolved symlinks
+# and compatibility
+unless File.respond_to? :realpath
+  class File #:nodoc:
+    def self.realpath path
+      return realpath(File.readlink(path)) if symlink?(path)
+      path
+    end
+  end
+end
+$: << File.expand_path(File.dirname(File.realpath(__FILE__)) + '/../lib')
+require 'rubygems'
+require 'gli'
+require 'h5bp'
+
+include GLI
+
+# Sets $stdout to avoid buffering the input.
+STDOUT.sync = true
+
+program_desc 'A Ruby build tool primarily for use with HTML5 Boilerplate.'
+
+version H5BP::VERSION
+
+desc 'Wipe the previous build dirs'
+command :clean do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Copies the whole staging(intermediate/) folder to output (publish/) one'
+command :copy do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Concats, replaces @imports and minifies the CSS files *'
+command :css do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Basic to aggresive html minification'
+command :html do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Optimizes .png/.jpg images'
+command :img do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Prepares the build dirs *'
+command :mkdirs do |c|
+  c.action do |global_options,options,args|
+    dirs = H5BP::Directories.new
+    dirs.make()
+  end
+end
+
+desc 'Automate the hash renames of assets filename *'
+command :rev do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Start a custom static web server'
+command :server do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Replaces references to non-minified scripts / stylesheets *'
+command :usemin do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+desc 'Build the given target: h5bp build <target>'
+long_desc <<EOS
+default: concat css min img rev usemin manifest\n
+text: concat css min rev usemin manifest\n
+buildkit: concat css min img rev usemin manifest html:buildkit\n
+basics: concat css min img rev usemin manifest html:basics\n
+minify: concat css min img rev usemin manifest html:compress
+EOS
+arg_name 'target'
+default_value 'default'
+command :build do |c|
+  c.action do |global_options,options,args|
+  end
+end
+
+pre do |global,command,options,args|
+  # Pre logic here
+  # Return true to proceed; false to abort and not call the
+  # chosen command
+  # Use skips_pre before a command to skip this block
+  # on that command only
+  true
+end
+
+post do |global,command,options,args|
+  # Post logic here
+  # Use skips_post before a command to skip this
+  # block on that command only
+  true
+end
+
+on_error do |exception|
+  # Error logic here
+  # return false to skip default error handling
+  true
+end
+
+exit GLI.run(ARGV)

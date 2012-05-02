@@ -1,0 +1,88 @@
+= <tt>h5bp</tt>
+
+A Ruby build tool primarily for use with HTML5 Boilerplate.
+
+    h5bp [global options] command_name [command-specific options] [--] arguments...
+
+* Use the command +help+ to get a summary of commands
+* Use the command <tt>help command_name</tt> to get a help for +command_name+
+* Use <tt>--</tt> to stop command line argument processing; useful if your arguments have dashes in them
+
+== Global Options
+These options are available for any command and are specified before the name of the command
+
+[<tt>--help</tt>] Show this message
+== Commands
+[<tt>build</tt>] Build targets: h5bp build <target>
+[<tt>clean</tt>] Wipe the previous build dirs
+[<tt>copy</tt>] Copies the whole staging(intermediate/) folder to output (publish/) one
+[<tt>css</tt>] Concats, replaces @imports and minifies the CSS files *
+[<tt>help</tt>] Shows list of commands or help for one command
+[<tt>html</tt>] Basic to aggresive html minification
+[<tt>img</tt>] Optimizes .png/.jpg images
+[<tt>mkdirs</tt>] Describe mkdirs here
+[<tt>rev</tt>] Automate the hash renames of assets filename *
+[<tt>server</tt>] Start a custom static web server
+[<tt>usemin</tt>] Replaces references to non-minified scripts / stylesheets *
+
+=== <tt>build target</tt>
+
+Build targets: h5bp build <target>
+
+default: concat css min img rev usemin manifest
+
+text: concat css min rev usemin manifest
+
+buildkit: concat css min img rev usemin manifest html:buildkit
+
+basics: concat css min img rev usemin manifest html:basics
+
+minify: concat css min img rev usemin manifest html:compress
+
+
+=== <tt>clean </tt>
+
+Wipe the previous build dirs
+
+=== <tt>copy </tt>
+
+Copies the whole staging(intermediate/) folder to output (publish/) one
+
+=== <tt>css </tt>
+
+Concats, replaces @imports and minifies the CSS files *
+
+=== <tt>help [command]</tt>
+
+Shows list of commands or help for one command
+
+Gets help for the application or its commands.  Can also list the commands in a way helpful to creating a bash-style completion function
+
+==== Options
+These options are specified *after* the command.
+
+[<tt>-c, --completion</tt>] List all commands one line at a time, for use with shell completion ([command] argument is partial command to match)
+=== <tt>html </tt>
+
+Basic to aggresive html minification
+
+=== <tt>img </tt>
+
+Optimizes .png/.jpg images
+
+=== <tt>mkdirs </tt>
+
+Describe mkdirs here
+
+=== <tt>rev </tt>
+
+Automate the hash renames of assets filename *
+
+=== <tt>server </tt>
+
+Start a custom static web server
+
+=== <tt>usemin </tt>
+
+Replaces references to non-minified scripts / stylesheets *
+
