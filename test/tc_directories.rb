@@ -27,6 +27,10 @@ class TC_testGLI < Test::Unit::TestCase
     delete_directories(@built_dirs)
   end
 
+  def test_dirs_is_real_object
+    assert_equal(false, @dirs.nil?)
+  end
+
   def test_make_builds_directories
     @dirs.make()
     @built_dirs.each { |dir| assert_equal(true, File.exists?(dir)) }
