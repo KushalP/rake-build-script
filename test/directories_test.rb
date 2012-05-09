@@ -16,7 +16,7 @@ require 'h5bp'
 
 include GLI
 
-class TC_testGLI < Test::Unit::TestCase
+class TestDirectories < Test::Unit::TestCase
   def setup
     @dirs = H5BP::Directories.new
     @built_dirs = ['publish', 'intermediate']
