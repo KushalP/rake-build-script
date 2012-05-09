@@ -39,6 +39,6 @@ class TestDirectories < Test::Unit::TestCase
   private
 
   def delete_directories(dirs)
-    dirs.each { |dir| `rm -rf #{dir}` if !File.exists?(dir) }
+    dirs.each { |dir| Dir::rmdir(dir) if !File.exists?(dir) }
   end
 end
